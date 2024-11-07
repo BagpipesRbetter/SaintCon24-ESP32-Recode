@@ -9,5 +9,4 @@ from what i can tell the badge is assembled from a
 - on off switch(disconnects batt and the usb{power} from SOC)
 ```
 so i decided to use cuircut python for this.feel free to give feedback or make a pull request if you have any ideas or suggestions. (especialy regardign the screen controll)
-### **:)**
-![](https://media.tenor.com/zlKoX5HPPu8AAAAM/cat-annoyed.gif)
+### ![](https://media.tenor.com/zlKoX5HPPu8AAAAM/cat-annoyed.gif)
