@@ -27,11 +27,11 @@ for cs_pin in cs_pins:
             # Setup CS and DC pins for display
             tft_cs = digitalio.DigitalInOut(cs_pin)
             tft_dc = digitalio.DigitalInOut(dc_pin)
-
+            
             # Initialize display bus and display object
             display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=None)
             display = ST7789(display_bus, width=240, height=320)
-
+            
             # Fill screen with red as a test
             splash = displayio.Group()
             color_bitmap = displayio.Bitmap(240, 320, 1)
@@ -41,18 +41,18 @@ for cs_pin in cs_pins:
             bg_sprite = displayio.TileGrid(color_bitmap, pixel_shader=color_palette, x=0, y=0)
             splash.append(bg_sprite)
             display.show(splash)
-
+            
             # Keep display on for a moment to observe
             time.sleep(5)
 
         except Exception as e:
             print(f"Failed with CS={cs_pin}, DC={dc_pin}: {e}")
-
+        
         # Safely turn off display and power off backlight before next iteration
         if 'display' in locals():
             display.show(None)
             del display
-
+        
         power_pin.value = False
         time.sleep(1)  # Short delay between tests
         power_pin.value = True
